@@ -10,12 +10,12 @@
     void yyerror();
 %}
 %x ML_COMMENT
-preprocessor_directives "#include <stdio.h>"
+preprocessor_directives #.*
 alpha       [a-zA-Z]
 digit       [0-9]
 alnum       {alpha}|{digit}
 print       [ -~]
-ARRAY       {alpha}+{alnum}*"["+"]"
+ARRAY       ({alpha}+{alnum}*"[".+"]")|({alpha}+{alnum}*"["+"]")
 ID          {alpha}+{alnum}*
 ICONST      "0"|[0-9]{digit}*
 FCONST      "0"|{digit}*"."{digit}+
